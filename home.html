@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SuperMarket - Grocery Shopping List</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Add Font Awesome for better icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="logo"><i class="fas fa-shopping-basket"></i> SuperMarket</div>
+    <nav>
+      <ul>
+        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#products"><i class="fas fa-store"></i> Products</a></li>
+        <li><a href="#offers"><i class="fas fa-tags"></i> Offers</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-right">
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search products...">
+        <button id="voice-search" class="voice-btn"><i class="fas fa-microphone"></i></button>
+      </div>
+      <a href="login.html" class="login-btn"><i class="fas fa-user"></i> Login</a>
+      <div class="cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Pop-up Cart Card -->
+  <div class="cart-popup" id="cart-popup">
+    <div class="cart-content">
+      <h3><i class="fas fa-shopping-cart"></i> Your Cart</h3>
+      <div class="cart-items-container">
+        <ul id="cart-items">
+          <!-- Cart items will be dynamically added here -->
+        </ul>
+      </div>
+      <div class="cart-summary">
+        <div class="subtotal">
+          <span>Subtotal:</span>
+          <span>₹<span id="cart-subtotal">0.00</span></span>
+        </div>
+        <div class="delivery">
+          <span>Delivery:</span>
+          <span>₹40.00</span>
+        </div>
+        <div class="total">
+          <span>Total:</span>
+          <span>₹<span id="cart-total">0.00</span></span>
+        </div>
+      </div>
+      <div class="cart-buttons">
+        <button id="checkout-btn" class="primary-btn">
+          <i class="fas fa-credit-card"></i> Checkout
+        </button>
+        <button id="close-cart" class="secondary-btn">
+          <i class="fas fa-times"></i> Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Welcome to SuperMarket</h1>
+      <p>Fresh groceries delivered to your doorstep!</p>
+      <div class="hero-buttons">
+        <button class="cta primary">Shop Now <i class="fas fa-arrow-right"></i></button>
+        <button class="cta secondary">View Deals <i class="fas fa-tag"></i></button>
+      </div>
+    </div>
+    <div class="hero-features">
+      <div class="feature">
+        <i class="fas fa-truck"></i>
+<!-- Vegetables -->
+<div class="items-grid">
+  <div class="item-card" data-name="Broccoli" data-price="159">
+    <img src="images/items/broccoli.jpg" alt="Broccoli">
+    <h4>Broccoli</h4>
+    <p class="price">₹159/kg</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <div class="item-card" data-name="Carrots" data-price="49">
+    <img src="images/items/carrots.jpg" alt="Carrots">
+    <h4>Carrots</h4>
+    <p class="price">₹49/kg</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <!-- ... similar updates for other vegetables ... -->
+</div>
+
+<!-- Dairy -->
+<div class="items-grid">
+  <div class="item-card" data-name="Milk" data-price="60">
+    <img src="images/items/milk.jpg" alt="Milk">
+    <h4>Milk</h4>
+    <p class="price">₹60/litre</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <div class="item-card" data-name="Cheese" data-price="299">
+    <img src="images/items/cheese.jpg" alt="Cheese">
+    <h4>Cheese</h4>
+    <p class="price">₹299/kg</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <!-- ... similar updates for other dairy products ... -->
+</div>
+
+<!-- Bakery -->
+<div class="items-grid">
+  <div class="item-card" data-name="Bread" data-price="40">
+    <img src="images/items/bread.jpg" alt="Bread">
+    <h4>Bread</h4>
+    <p class="price">₹40/loaf</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <div class="item-card" data-name="Bagels" data-price="149">
+    <img src="images/items/bagels.jpg" alt="Bagels">
+    <h4>Bagels</h4>
+    <p class="price">₹149/6-pack</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <!-- ... similar updates for other bakery items ... -->
+</div>
+
+<!-- Beverages -->
+<div class="items-grid">
+  <div class="item-card" data-name="Water" data-price="99">
+    <img src="images/items/water.jpg" alt="Water">
+    <h4>Water</h4>
+    <p class="price">₹99/24-pack</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <div class="item-card" data-name="Soda" data-price="89">
+    <img src="images/items/soda.jpg" alt="Soda">
+    <h4>Soda</h4>
+    <p class="price">₹89/2L</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <!-- ... similar updates for other beverages ... -->
+</div>
+
+<!-- Snacks -->
+<div class="items-grid">
+  <div class="item-card" data-name="Chips" data-price="40">
+    <img src="images/items/chips.jpg" alt="Chips">
+    <h4>Chips</h4>
+    <p class="price">₹40/pack</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <div class="item-card" data-name="Popcorn" data-price="99">
+    <img src="images/items/popcorn.jpg" alt="Popcorn">
+    <h4>Popcorn</h4>
+    <p class="price">₹99/pack</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <!-- ... similar updates for other snacks ... -->
+</div>
+
+<!-- Meat & Seafood -->
+<div class="items-grid">
+  <div class="item-card" data-name="Chicken" data-price="299">
+    <img src="images/items/chicken.jpg" alt="Chicken">
+    <h4>Chicken Breast</h4>
+    <p class="price">₹299/kg</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <div class="item-card" data-name="Salmon" data-price="899">
+    <img src="images/items/salmon.jpg" alt="Salmon">
+    <h4>Fresh Salmon</h4>
+    <p class="price">₹899/kg</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <!-- ... similar updates for other meat items ... -->
+</div>
+
+<!-- Frozen Foods -->
+<div class="items-grid">
+  <div class="item-card" data-name="Pizza" data-price="249">
+    <img src="images/items/frozen-pizza.jpg" alt="Frozen Pizza">
+    <h4>Frozen Pizza</h4>
+    <p class="price">₹249/ea</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <div class="item-card" data-name="Ice Cream" data-price="199">
+    <img src="images/items/ice-cream.jpg" alt="Ice Cream">
+    <h4>Ice Cream</h4>
+    <p class="price">₹199/tub</p>
+    <button class="add-to-cart">Add to Cart</button>
+  </div>
+  <!-- ... similar updates for other frozen items ... -->
+</div>        <h3>Free Delivery</h3>
+        <p>On orders over ₹2500</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-clock"></i>
+        <h3>24/7 Support</h3>
+        <p>Always here to help</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Secure Payment</h3>
+        <p>100% secure checkout</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="products">
+    <h2>Our Products</h2>
+    <div class="category-grid">
+      <!-- Fruits -->
+      <div class="category-card">
+        <img src="images/Fruits.jpeg" alt="Fruits">
+        <h3>Fruits</h3>
+        <div class="items-grid">
+          <!-- Example updates for item cards -->
+          <div class="item-card" data-name="Apples" data-price="199">
+            <img src="images/apple.jpeg" alt="Apples">
+            <h4>Apples</h4>
+            <p class="price">₹199/kg</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          
+          <div class="item-card" data-name="Bananas" data-price="59">
+            <img src="images/Bananas.jpeg" alt="Bananas">
+            <h4>Bananas</h4>
+            <p class="price">₹59/kg</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <!-- Fruits -->
+          <div class="item-card" data-name="Oranges" data-price="149">
+            <img src="images/oranges.jpeg" alt="Oranges">
+            <h4>Oranges</h4>
+            <p class="price">₹149/kg</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          
+          <div class="item-card" data-name="Grapes" data-price="299">
+            <img src="images/grapes.jpeg" alt="Grapes">
+            <h4>Grapes</h4>
+            <p class="price">₹299/kg</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          
+          <!-- Vegetables -->
+          <div class="item-card" data-name="Watermelon" data-price="4.99">
+            <img src="images/watermelon.jpeg" alt="Watermelon">
+            <h4>Watermelon</h4>
+            <p class="price">$4.99/ea</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vegetables -->
+      <div class="category-card">
+        <img src="images/vegetables.jpeg" alt="Vegetables">
+        <h3>Vegetables</h3>
+        <div class="items-grid">
+          <div class="item-card" data-name="Broccoli" data-price="1.99">
+            <img src="images/broccoli.jpg" alt="Broccoli">
+            <h4>Broccoli</h4>
+            <p class="price">₹159/kg</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="item-card" data-name="Carrots" data-price="0.99">
+            <img src="images/carrots.jpeg" alt="Carrots">
+            <h4>Carrots</h4>
+            <p class="price">₹49/kg</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="item-card" data-name="Tomatoes" data-price="2.49">
+            <img src="images/tomatoes.webp" alt="Tomatoes">
+            <h4>Tomatoes</h4>
+            <p class="price">₹129/kg</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="item-card" data-name="Spinach" data-price="2.99">
+            <img src="images/spinach.jpeg" alt="Spinach">
+            <h4>Spinach</h4>
+            <p class="price">₹149/bundle</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="item-card" data-name="Zucchini" data-price="1.49">
+            <img src="images/zucchini.jpg" alt="Zucchini">
+            <h4>Zucchini</h4>
+            <p class="price">₹79/kg</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dairy -->
+      <div class="category-card">
+        <img src="images/dairy.jpeg" alt="Dairy">
+        <h3>Dairy</h3>
+        <div class="items-grid">
+          <div class="item-card" data-name="Milk" data-price="3.49">
+            <img src="images/milk.jpeg" alt="Milk">
+            <h4>Milk</h4>
+            <p class="price">₹60/litre</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="item-card" data-name="Cheese" data-price="4.99">
+            <img src="images/cheese.jpg" alt="Cheese">
+            <h4>Cheese</h4>
+            <p class="price">₹299/kg</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="item-card" data-name="Yogurt" data-price="0.99">
+            <img src="images/yogurt.jpg" alt="Yogurt">
+            <h4>Yogurt</h4>
+            <p class="price">₹49/pack</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="item-card" data-name="Butter" data-price="2.99">
+            <img src="images/butter.jpg" alt="Butter">
+            <h4>Butter</h4>
+            <p class="price">₹149/pack</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="item-card" data-name="Eggs" data-price="1.99">
+            <img src="images/eggs.jpeg" alt="Eggs">
+            <h4>Eggs</h4>
+            <p class="price">₹99/dozen</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bakery -->
+      <div class="category-card">
+        <img src="images/bakery.jpg" alt="Bakery">
+        <h3>Bakery</h3>
+        <div class="items-grid">
+          <div class="item-card" data-name="Bread" data-price="2.99">
+            <img src="images/bread.jpg" alt="Bread">
+            <h4>Bread</h4>
+            <p class="price">₹40/loaf</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="item-card" data-name="Bagels" data-price="3.49">
+            <img src="images/bagels.jpeg" alt="Bagels">
+            <h4>Bagels</h4>
+            <p class="price">₹149/6-pack</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="item-card" data-name="Muffins" data-price="4.99">
+            <img src="images/muffins.jpeg" alt="Muffins">
+            <h4>Muffins</h4>
+            <p class="price">₹199/4-pack</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="item-card" data-name="Croissants" data-price="5.99">
+            <img src="images/croissants.jpg" alt="Croissants">
+            <h4>Croissants</h4>
+            <p class="price">₹249/6-pack</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="item-card" data-name="Cake" data-price="12.99">
+            <img src="images/cake.jpeg" alt="Cake">
+            <h4>Cake</h4>
+            <p class="price">₹599/ea</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beverages -->
+      <div class="category-card">
+        <img src="images/beverages.jpg" alt="Beverages">
+        <h3>Beverages</h3>
+        <div class="items-grid">
+          <div class="item-card" data-name="Water" data-price="4.99">
+            <img src="images/water.jpg" alt="Water">
+            <h4>Water</h4>
+            <p class="price">₹199/24-pack</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="item-card" data-name="Soda" data-price="1.99">
+            <img src="images/soda.jpg" alt="Soda">
+            <h4>Soda</h4>
+            <p class="price">₹89/2L</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="item-card" data-name="Coffee" data-price="7.99">
+            <img src="images/coffee.jpeg" alt="Coffee">
+            <h4>Coffee</h4>
+            <p class="price">₹399/kg</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="item-card" data-name="Tea" data-price="3.99">
+            <img src="images/tea.jpg" alt="Tea">
+            <h4>Tea</h4>
+            <p class="price">₹199/box</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="item-card" data-name="Juice" data-price="2.99">
+            <img src="images/juice.jpeg" alt="Juice">
+            <h4>Juice</h4>
+            <p class="price">₹149/bottle</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <!-- Snacks -->
+            <div class="category-card">
+              <img src="images/snacks.jpg" alt="Snacks">
+              <h3>Snacks</h3>
+              <div class="items-grid">
+                <div class="item-card" data-name="Chips" data-price="3.49">
+                  <img src="images/chips.jpg" alt="Chips">
+                  <h4>Chips</h4>
+                  <p class="price">₹40/pack</p>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item-card" data-name="Popcorn" data-price="2.99">
+                  <img src="images/popcorn.webp" alt="Popcorn">
+                  <h4>Popcorn</h4>
+                  <p class="price">₹99/pack</p>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item-card" data-name="Nuts" data-price="5.99">
+                  <img src="images/nuts.jpg" alt="Nuts">
+                  <h4>Mixed Nuts</h4>
+                  <p class="price">₹299/kg</p>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item-card" data-name="Cookies" data-price="3.99">
+                  <img src="images/cookies.jpeg" alt="Cookies">
+                  <h4>Cookies</h4>
+                  <p class="price">₹199/pack</p>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item-card" data-name="Crackers" data-price="2.49">
+                  <img src="images/crackers.jpg" alt="Crackers">
+                  <h4>Crackers</h4>
+                  <p class="price">₹129/box</p>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+      
+            <!-- Meat & Seafood -->
+            <div class="category-card">
+              <img src="images/meat.jpeg" alt="Meat & Seafood">
+              <h3>Meat & Seafood</h3>
+              <div class="items-grid">
+                <div class="item-card" data-name="Chicken" data-price="6.99">
+                  <img src="images/chicken.jpg" alt="Chicken">
+                  <h4>Chicken Breast</h4>
+                  <p class="price">₹299/kg</p>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item-card" data-name="Salmon" data-price="12.99">
+                  <img src="images/salmon.jpeg" alt="Salmon">
+                  <h4>Fresh Salmon</h4>
+                  <p class="price">₹899/kg</p>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item-card" data-name="Beef" data-price="9.99">
+                  <img src="images/beef.jpeg" alt="Beef">
+                  <h4>Ground Beef</h4>
+                  <p class="price">₹499/kg</p>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item-card" data-name="Shrimp" data-price="15.99">
+                  <img src="images/shrimp.jpg" alt="Shrimp">
+                  <h4>Shrimp</h4>
+                  <p class="price">₹799/kg</p>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item-card" data-name="Pork" data-price="7.99">
+                  <img src="images/pork.jpeg" alt="Pork">
+                  <h4>Pork Chops</h4>
+                  <p class="price">₹399/kg</p>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+      
+            <!-- Frozen Foods -->
+            <div class="category-card">
+              <img src="images/frozen.jpg" alt="Frozen Foods">
+              <h3>Frozen Foods</h3>
+              <div class="items-grid">
+                <div class="item-card" data-name="Pizza" data-price="6.99">
+                  <img src="images/frozen-pizza.jpeg" alt="Frozen Pizza">
+                  <h4>Frozen Pizza</h4>
+                  <p class="price">₹249/ea</p>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item-card" data-name="Ice Cream" data-price="4.99">
+                  <img src="images/ice-cream.jpeg" alt="Ice Cream">
+                  <h4>Ice Cream</h4>
+                  <p class="price">₹199/tub</p>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item-card" data-name="Vegetables" data-price="3.49">
+                  <img src="images/frozen-veggies.jpg" alt="Frozen Vegetables">
+                  <h4>Mixed Vegetables</h4>
+                  <p class="price">₹149/bag</p>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item-card" data-name="TV Dinner" data-price="4.49">
+                  <img src="images/tv-dinner.jpeg" alt="TV Dinner">
+                  <h4>TV Dinner</h4>
+                  <p class="price">₹199/ea</p>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="item-card" data-name="Fish Sticks" data-price="5.99">
+                  <img src="images/fish-sticks.jpeg" alt="Fish Sticks">
+                  <h4>Fish Sticks</h4>
+                  <p class="price">₹249/box</p></p>
+                  <button class="add-to-cart">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+    </div>
+  </section>
+
+  <section id="offers" class="offers">
+    <h2>Special Offers</h2>
+    <div class="offers-grid">
+      <div class="offer-card">
+        <div class="offer-badge">Save 20%</div>
+        <div class="offer-image">
+          <img src="images/weekend-special.jpeg" alt="Weekend Special">
+          <div class="offer-timer">
+            <i class="fas fa-clock"></i>
+            <span>Ends in: 48h</span>
+          </div>
+        </div>
+        <h3>Weekend Special</h3>
+        <p>Get 20% off on all fresh fruits!</p>
+        <ul class="offer-features">
+          <li><i class="fas fa-check"></i> All fruits included</li>
+          <li><i class="fas fa-check"></i> Fresh selections only</li>
+          <li><i class="fas fa-check"></i> Valid this weekend</li>
+        </ul>
+        <div class="offer-code">
+          <span>Use Code: </span>
+          <strong>FRESH20</strong>
+        </div>
+        <button class="offer-btn">
+          <span>Shop Now</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <div class="offer-card">
+        <div class="offer-badge">Bundle</div>
+        <div class="offer-image">
+          <img src="images/family-pack.jpeg" alt="Family Pack">
+          <div class="offer-savings">
+            <span>Save</span>
+            <strong>₹1000</strong>
+          </div>
+        </div>
+        <h3>Family Pack</h3>
+        <p>Buy groceries worth ₹5000 and get ₹1000 off</p>
+        <ul class="offer-features">
+          <li><i class="fas fa-check"></i> All categories included</li>
+          <li><i class="fas fa-check"></i> Free delivery</li>
+          <li><i class="fas fa-check"></i> Extra loyalty points</li>
+        </ul>
+        <div class="offer-code">
+          <span>Use Code: </span>
+          <strong>FAMILY20</strong>
+        </div>
+        <button class="offer-btn">
+          <span>Learn More</span>
+          <i class="fas fa-info-circle"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+        <p><i class="fas fa-envelope"></i> support@supermarket.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Grocery St, Food City</p>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <div class="newsletter">
+          <input type="email" placeholder="Enter your email">
+          <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023 SuperMarket. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - SuperMarket</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo">SuperMarket</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="index.html#offers">Offers</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="login-section">
+    <div class="login-container">
+      <h2>Login</h2>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 SuperMarket. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Login Form Submission
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Basic validation
+      if (email && password) {
+        alert('Login successful! Redirecting to home page...');
+        window.location.href = 'index.html'; // Redirect to home page
+      } else {
+        alert('Please fill in all fields.');
+      }
+    });
+  </script>
+</body>
+</html>
